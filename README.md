@@ -1,4 +1,4 @@
-# Demo: Otimização de JOINs SQL com Node.js e PostgreSQL 🚀
+# Otimização de JOINs SQL com Node.js e PostgreSQL 🚀
 
 Este projeto demonstra a diferença de desempenho entre duas abordagens para resolver uma consulta SQL complexa que envolve múltiplos JOINs, focando no "problema do diamante".
 
