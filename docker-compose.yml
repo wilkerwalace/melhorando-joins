@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: postgres_join_demo_ts
+    restart: always
+    environment:
+      POSTGRES_DB: ${PGDATABASE:-join_demo_db}
+      POSTGRES_USER: ${PGUSER:-usuario_demo}
+      POSTGRES_PASSWORD: ${PGPASSWORD:-senha_demo}
+    ports:
+      - "${PGPORT:-5432}:5432"
+    volumes:
+      - postgres_dados_ts:/var/lib/postgresql/data
+
+volumes:
+  postgres_dados_ts:

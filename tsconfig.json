@@ -1,0 +1,24 @@
+// tsconfig.json
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "ES2016",
+    "lib": ["ES6"],
+
+    /* Modules */
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "resolveJsonModule": true,
+
+    /* Emit */
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

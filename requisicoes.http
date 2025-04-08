@@ -1,0 +1,52 @@
+### Arquivo de Testes para a API Demo JOIN Performance
+
+# Variáveis (opcional, mas útil se precisar mudar a porta ou host)
+@hostname = localhost
+@port = 3000
+@api_base = http://{{hostname}}:{{port}}/api
+@droga_a = DrogaA-Especial
+@droga_b = DrogaB-Comum
+@droga_c = OutraDrogaX
+@droga_d = MaisUmaDrogaY
+
+### ==================================
+### Teste Principal: Comparação A vs B
+### ==================================
+
+### Consulta usando JOIN Padrão (Esperado ser mais LENTO)
+# Testa o endpoint /join-padrao com as drogas que sabemos que interagem e são tomadas por muitos.
+GET {{api_base}}/join-padrao?droga1={{droga_a}}&droga2={{droga_b}}
+Accept: application/json
+
+### Consulta usando Busca & Expansão (Esperado ser mais RÁPIDO)
+# Testa o endpoint /busca-expansao-join com as mesmas drogas.
+# Compare o 'tempoExecucaoMs' com a requisição anterior.
+GET {{api_base}}/busca-expansao-join?droga1={{droga_a}}&droga2={{droga_b}}
+Accept: application/json
+
+
+### ==================================
+### Testes Adicionais (Casos de Borda)
+### ==================================
+
+### Teste: Drogas que NÃO interagem (ou não existem) - JOIN Padrão
+# Deve retornar resultado vazio ou um erro se as drogas não existirem.
+GET {{api_base}}/join-padrao?droga1={{droga_c}}&droga2={{droga_d}}
+Accept: application/json
+
+### Teste: Drogas que NÃO interagem (ou não existem) - Busca & Expansão
+# Deve retornar resultado vazio rapidamente (após checar a interação).
+GET {{api_base}}/busca-expansao-join?droga1={{droga_c}}&droga2={{droga_d}}
+Accept: application/json
+
+### Teste: Mesma droga (Deve retornar erro 400) - JOIN Padrão
+GET {{api_base}}/join-padrao?droga1={{droga_a}}&droga2={{droga_a}}
+Accept: application/json
+
+### Teste: Mesma droga (Deve retornar erro 400) - Busca & Expansão
+GET {{api_base}}/busca-expansao-join?droga1={{droga_a}}&droga2={{droga_a}}
+Accept: application/json
+
+### Teste: Parâmetros faltando (Deve retornar erro 400)
+GET {{api_base}}/join-padrao?droga1={{droga_a}}
+Accept: application/json

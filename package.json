@@ -1,0 +1,33 @@
+{
+  "name": "SuperJoin",
+  "version": "1.0.0",
+  "description": "Demonstração de desempenho de JOINs SQL com Node.js e TypeScript",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "db:seed": "ts-node src/seed.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "pg": "^8.14.1",
+    "pg-copy-streams": "^6.0.6"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.6.0",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.0",
+    "@types/pg": "^8.11.11",
+    "@types/pg-copy-streams": "^1.2.5",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
