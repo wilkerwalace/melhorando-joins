@@ -37,7 +37,7 @@ Antes de começar, garanta que você tenha instalado:
 1.  **Clone o Repositório:**
     ```bash
     git clone https://github.com/wilkerwalace/melhorando-joins
-    cd <lembrar de por depois>
+    cd melhorando-joins
     ```
 
 2.  **Instale as Dependências:**
